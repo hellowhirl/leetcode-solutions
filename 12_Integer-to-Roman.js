@@ -63,13 +63,14 @@ var intToRoman = function (num) {
     }
   }
 
-  roman.forEach((n, index) => (n === "0" ? roman.splice(index, 1) : null));
-  roman.forEach((n, index) => (n === "00" ? roman.splice(index, 1) : null));
-  roman.forEach((n, index) => (n === "000" ? roman.splice(index, 1) : null));
-
-  for (let x of roman) {
-    result += chart.get(x);
+  for (i = 0; i < roman.length; i++) {
+    if (roman[i] === "0" || roman[i] === "00" || roman[i] === "000") continue;
+    else {
+      result += chart.get(roman[i]);
+    }
   }
 
   return result;
 };
+
+intToRoman(1201);
