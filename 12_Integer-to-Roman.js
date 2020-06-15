@@ -34,29 +34,20 @@ var intToRoman = function (num) {
     ["3000", "MMM"],
   ]);
 
-  let arrOutput = [];
   let roman = [];
   let result = "";
   const sNumber = num.toString();
 
   let stringified = sNumber.split("");
+  let digits = stringified.length;
+  const zero = "0";
 
-  for (i = 0; i <= stringified.length; i++) {
-    if (i + 1 === stringified.length) {
-      roman.push(stringified[i]);
+  for (i = 0; i < stringified.length; i++) {
+    if (i + digits === stringified.length) {
+      stringified[i] = stringified[i] + zero.repeat(digits - 1);
+      digits--;
     }
-    if (i + 2 === stringified.length) {
-      stringified[i] += "0";
-      roman.push(stringified[i]);
-    }
-    if (i + 3 === stringified.length) {
-      stringified[i] += "00";
-      roman.push(stringified[i]);
-    }
-    if (i + 4 === stringified.length) {
-      stringified[i] += "000";
-      roman.push(stringified[i]);
-    }
+    roman.push(stringified[i]);
   }
 
   for (i = 0; i < roman.length; i++) {
@@ -68,3 +59,5 @@ var intToRoman = function (num) {
 
   return result;
 };
+
+intToRoman(10);
