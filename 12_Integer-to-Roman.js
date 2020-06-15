@@ -39,11 +39,7 @@ var intToRoman = function (num) {
   let result = "";
   const sNumber = num.toString();
 
-  for (var i = 0, len = sNumber.length; i < len; i += 1) {
-    arrOutput.push(+sNumber.charAt(i));
-  }
-
-  let stringified = arrOutput.map((n) => `${n}`);
+  let stringified = sNumber.split("");
 
   for (i = 0; i <= stringified.length; i++) {
     if (i + 1 === stringified.length) {
@@ -72,5 +68,3 @@ var intToRoman = function (num) {
 
   return result;
 };
-
-intToRoman(1201);
