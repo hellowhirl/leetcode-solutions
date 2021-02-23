@@ -28,7 +28,7 @@ Constraints:
 
 //////
 
-someNums = [1, 2, 3, 4];
+const someNums = [1, 2, 3, 4];
 
 var runningSum = function (nums) {
   let last = 0;
