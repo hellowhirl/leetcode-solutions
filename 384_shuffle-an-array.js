@@ -49,6 +49,7 @@ Solution.prototype.shuffle = function () {
 };
 
 /**
+ * var nums = [1, 2, 3];
  * Your Solution object will be instantiated and called as such:
  * var obj = new Solution(nums)
  * var param_1 = obj.reset()
