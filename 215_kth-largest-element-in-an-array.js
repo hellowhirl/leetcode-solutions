@@ -24,6 +24,10 @@ var findKthLargest = function (nums, k) {
   const sortedArray = nums.sort(function (a, b) {
     return a - b;
   });
-  sortedArray.reverse();
-  return sortedArray[k - 1];
+  return sortedArray[sortedArray.length - k];
 };
+
+const nums = [3, 2, 1, 5, 6, 4];
+const k = 2;
+
+findKthLargest(nums, k);
