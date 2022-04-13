@@ -12,21 +12,17 @@ var isAnagram = function (s, t) {
       letterCount[s[i]] = 1;
     }
   }
-  console.log(letterCount);
 
   for (let j = 0; j < t.length; j++) {
     if (t[j] in letterCount) {
       if (letterCount[t[j]] === 0) return false;
       letterCount[t[j]] -= 1;
     } else {
-      return false;
+      return false; // for letters that are not in the original string
     }
   }
-  console.log(letterCount);
 
-  const sumValues = (obj) => Object.values(obj).reduce((a, b) => a + b);
-
-  if (sumValues(letterCount) !== 0) return false;
+  // if all tests above pass then the 2 words are indeed anagrams
   return true;
 };
 
