@@ -45,7 +45,7 @@ class MyQueue {
   constructor() {
     this.storage = {};
     this.first = 0;
-    this.last = 0;
+    this.last = 0; // represents the index of the next element that will be added
   }
 
   peek() {
@@ -57,19 +57,24 @@ class MyQueue {
   }
 
   isEmpty() {
-    return this.first === this.last;
+    // return this.first === this.last;
+    // or
+    return this.size() === 0;
   }
 
   enqueue(val) {
     this.storage[this.last] = val;
-    this.last++;
+    this.last++; // increment the last value to be ready for the next element that would be added
   }
 
   dequeue() {
-    const firstItem = this.storage[this.first];
-    delete this.storage[this.first];
-    this.first++;
-    return firstItem;
+    if (!this.isEmpty()) {
+      const firstItem = this.storage[this.first];
+      delete this.storage[this.first];
+      this.first++;
+      return firstItem;
+    }
+    return null; // a guard for when we have no elements in our queue
   }
 }
 
