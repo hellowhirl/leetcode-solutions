@@ -2,6 +2,10 @@ function isValid(s: string): boolean {
   const stack = new MyAnotherStack();
 
   for (let i = 0; i < s.length; i++) {
+    if (s[i] === "(" || s[i] === "{" || s[i] === "[") {
+      stack.push(s[i]);
+      continue;
+    }
     if (s[i] === ")" && stack.peek() === "(") {
       stack.pop();
       continue;
@@ -14,13 +18,10 @@ function isValid(s: string): boolean {
       stack.pop();
       continue;
     }
-
-    stack.push(s[i]);
+    return false; // fails at the first sign of invalid parenthesis
   }
 
-  if (stack.size() === 0) return true;
-
-  return false;
+  return stack.isEmpty(); // needed to check in case remaining string is '(', '[', or '{'
 }
 
 class MyAnotherStack {
@@ -53,6 +54,10 @@ class MyAnotherStack {
 
   size() {
     return this.currentIndex;
+  }
+
+  isEmpty() {
+    return this.size() === 0;
   }
 }
 
