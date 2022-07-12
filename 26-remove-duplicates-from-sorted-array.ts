@@ -9,8 +9,6 @@ function removeDuplicates(nums: number[]): number {
       nums[pointer] = nums[i];
       prev = nums[i];
       pointer++;
-    } else {
-      delete nums[i];
     }
   }
 
