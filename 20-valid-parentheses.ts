@@ -1,20 +1,23 @@
+// 20. Valid parentheses
+
 function isValid(s: string): boolean {
   const stack = new MyAnotherStack();
 
+  const brackets = {
+    "(": ")",
+    "{": "}",
+    "[": "]",
+  };
+
   for (let i = 0; i < s.length; i++) {
-    if (s[i] === "(" || s[i] === "{" || s[i] === "[") {
+    if (Object.keys(brackets).includes(s[i])) {
       stack.push(s[i]);
       continue;
     }
-    if (s[i] === ")" && stack.peek() === "(") {
-      stack.pop();
-      continue;
-    }
-    if (s[i] === "}" && stack.peek() === "{") {
-      stack.pop();
-      continue;
-    }
-    if (s[i] === "]" && stack.peek() === "[") {
+    if (
+      Object.values(brackets).includes(s[i]) &&
+      s[i] === brackets[stack.peek()]
+    ) {
       stack.pop();
       continue;
     }
@@ -64,7 +67,7 @@ class MyAnotherStack {
 const test = "()";
 isValid(test);
 
-const problem = `
+const problem20 = `
 
 Given a string s containing just the characters '(', ')', '{', '}', '[' and ']', determine if the input string is valid.
 
