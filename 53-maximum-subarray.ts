@@ -5,8 +5,9 @@ function maxSubArray(nums: number[]): number {
   let globalSUm = nums[0];
 
   for (var i = 1; i < nums.length; i++) {
-    if (nums[i] + currentSum > nums[i]) {
-      currentSum = nums[i] + currentSum;
+    const combinedSum = nums[i] + currentSum;
+    if (combinedSum > nums[i]) {
+      currentSum = combinedSum;
     } else {
       currentSum = nums[i];
     }
