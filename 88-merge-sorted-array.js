@@ -4,28 +4,17 @@ var merge = function (nums1, m, nums2, n) {
   let nums1pointer = m - 1;
   let nums2pointer = n - 1;
 
-  if (m === 0) {
-    for (let i = nums2.length - 1; i >= 0; i--) {
-      nums1[i] = nums2[nums2pointer];
-      nums2pointer--;
-    }
-    return nums1;
-  }
+  for (let i = m + n - 1; i >= 0; i--) {
+    if (nums2pointer < 0) {
+      break;
+    } // when we exhaust every item in nums2, it means we have a fully sorted nums1 array
 
-  if (n === 0) {
-    return nums1;
-  }
-
-  for (let i = nums1.length - 1; i >= 0; i--) {
     if (nums1[nums1pointer] > nums2[nums2pointer]) {
       nums1[i] = nums1[nums1pointer];
       nums1pointer--;
-    } else if (nums2pointer >= 0) {
+    } else {
       nums1[i] = nums2[nums2pointer];
       nums2pointer--;
-    } else {
-      nums1[i] = nums1[nums1pointer];
-      nums1pointer--;
     }
   }
 
@@ -37,15 +26,15 @@ var merge = function (nums1, m, nums2, n) {
 // const nums2 = [2, 5, 6];
 // const n = 3;
 
-const nums1 = [0];
-const m = 0;
-const nums2 = [1];
-const n = 1;
-
-// const nums1 = [2, 0];
-// const m = 1;
+// const nums1 = [0];
+// const m = 0;
 // const nums2 = [1];
 // const n = 1;
+
+const nums1 = [2, 0]; // when 1 is compared to 'undefined' on the 2nd iteration, it will return false and proceed to the else block
+const m = 1;
+const nums2 = [1];
+const n = 1;
 
 // const nums1 = [4, 0, 0, 0, 0, 0];
 // const m = 1;
