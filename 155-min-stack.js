@@ -12,6 +12,8 @@ var MinStack = function () {
  * @param {number} val
  * @return {void}
  */
+
+// Creates two stacks, and keeps track of what is the minimum value at every part of the stack in the min stack
 MinStack.prototype.push = function (val) {
   if (this.stack.length === 0) {
     this.min.push(val);
