@@ -8,20 +8,20 @@ var isPalindrome = function (s) {
   let pointer1 = 0;
   let pointer2 = s.length - 1;
 
-  function isLetter(str) {
-    return str.length === 1 && str.toLowerCase().match(/[a-z0-9]/i);
+  function isValidCharacter(char) {
+    return char.length === 1 && char.toLowerCase().match(/[a-z0-9]/i);
   }
 
   while (pointer1 < pointer2) {
-    if (isLetter(s[pointer1]) && isLetter(s[pointer2])) {
+    if (isValidCharacter(s[pointer1]) && isValidCharacter(s[pointer2])) {
       if (s[pointer1].toLowerCase() !== s[pointer2].toLowerCase()) {
         return false;
       }
       pointer1++;
       pointer2--;
-    } else if (!isLetter(s[pointer1])) {
+    } else if (!isValidCharacter(s[pointer1])) {
       pointer1++;
-    } else if (!isLetter(s[pointer2])) {
+    } else if (!isValidCharacter(s[pointer2])) {
       pointer2--;
     }
   }
