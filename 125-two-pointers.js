@@ -1,21 +1,29 @@
-// 125. Valid Palindrome
+// 125. Valid Palindrome - two pointers
 
 /**
  * @param {string} s
  * @return {boolean}
  */
 var isPalindrome = function (s) {
-  const replaced = s.replace(/[^a-z0-9]/gi, "").toLowerCase();
-  const stack = [];
+  let pointer1 = 0;
+  let pointer2 = s.length - 1;
 
-  for (let i = 0; i < Math.floor(replaced.length / 2); i++) {
-    stack.push(replaced[i]);
+  function isLetter(str) {
+    return str.length === 1 && str.toLowerCase().match(/[a-z0-9]/i);
   }
 
-  let counter = 0;
-  for (let i = replaced.length - 1; i >= Math.ceil(replaced.length / 2); i--) {
-    if (replaced[i] !== stack[counter]) return false;
-    counter++;
+  while (pointer1 < pointer2) {
+    if (isLetter(s[pointer1]) && isLetter(s[pointer2])) {
+      if (s[pointer1].toLowerCase() !== s[pointer2].toLowerCase()) {
+        return false;
+      }
+      pointer1++;
+      pointer2--;
+    } else if (!isLetter(s[pointer1])) {
+      pointer1++;
+    } else if (!isLetter(s[pointer2])) {
+      pointer2--;
+    }
   }
 
   return true;
@@ -26,7 +34,7 @@ const test2 = "noon";
 const test3 = "racecar";
 const test4 = "race a car";
 
-isPalindrome(test4);
+isPalindrome(test1);
 
 const prompt125 = `
 A phrase is a palindrome if, after converting all uppercase letters into lowercase letters and removing all non-alphanumeric characters, it reads the same forward and backward. Alphanumeric characters include letters and numbers.
