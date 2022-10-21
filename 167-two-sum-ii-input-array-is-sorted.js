@@ -10,9 +10,12 @@ var twoSum = function (numbers, target) {
   let pointer2 = numbers.length - 1;
 
   while (pointer1 < numbers.length && pointer2 > 0) {
-    if (numbers[pointer1] + numbers[pointer2] === target) {
+    let leftNumber = numbers[pointer1];
+    let rightNumber = numbers[pointer2];
+
+    if (leftNumber + rightNumber === target) {
       break;
-    } else if (numbers[pointer1] + numbers[pointer2] < target) {
+    } else if (leftNumber + rightNumber < target) {
       pointer1++;
     } else {
       pointer2--;
