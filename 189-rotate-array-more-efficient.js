@@ -11,19 +11,15 @@ var rotate = function (arr, k) {
   }
 
   k = k % arr.length;
-  let temp = [];
 
   let reverser = (arr, beg, end) => {
-    const middle = Math.floor((end + 1 - beg) / 2) + beg;
-    for (let i = beg; i <= end; i++) {
-      if (i < middle) {
-        temp.push(arr[i]);
-        arr[i] = arr[end - i + beg];
-      } else if (i > middle) {
-        arr[i] = temp.pop();
-      } else if ((end + 1 - beg) % 2 === 0) {
-        arr[i] = temp.pop();
-      }
+    let temp;
+    while (beg < end) {
+      temp = arr[beg];
+      arr[beg] = arr[end];
+      arr[end] = temp;
+      beg++;
+      end--;
     }
   };
 
