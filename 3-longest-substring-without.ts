@@ -8,14 +8,12 @@ function lengthOfLongestSubstring(s: string): number {
   let right = 0;
   let last = "";
 
-  while (right >= left) {
-    if (s[right] === undefined) {
-      break;
-    }
+  while (right < s.length) {
     if (!set.has(s[right])) {
       set.add(s[right]);
       right++;
       current++;
+      highest = current > highest ? current : highest;
     } else {
       while (true) {
         if (s[left] === s[right]) {
@@ -32,7 +30,6 @@ function lengthOfLongestSubstring(s: string): number {
       }
     }
     last = s[right - 1];
-    highest = current > highest ? current : highest;
   }
   return highest;
 }
