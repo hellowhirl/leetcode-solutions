@@ -1,6 +1,6 @@
 // 5. Longest Palindromic Substring
 
-function longestPalindrome(s) {
+function longestPalindrome(s: string): string {
   if (s.length < 2) {
     return s;
   }
